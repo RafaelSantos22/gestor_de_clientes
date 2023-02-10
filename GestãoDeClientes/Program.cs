@@ -51,13 +51,26 @@ namespace GestaoDeClientes
         private static void Remover()
         {
             Console.Clear();
+            Listagem();
+            Console.Write("\nDigite o ID do cliente que deseja remover: ");
+            int id = int.Parse(Console.ReadLine());
+            if(id >= 0 && id < clientes.Count)
+            {
+                Console.Clear();
+                clientes.RemoveAt(id);
+                Console.WriteLine("\nCliente removido com sucesso!");
+            } else
+            {
+                Console.Clear();
+                Console.WriteLine("ID não encontrado!\n");
+            }
         }
 
         private static void Listagem()
         {
             Console.Clear();
             Console.WriteLine("\t\t\t\t\tLista de Clientes\n\n");
-            int i = 1;
+            int i = 0;
             if (clientes.Count > 0)
             {
                 foreach (Cliente cliente in clientes)
